@@ -1,6 +1,5 @@
-// pages/CategoryNews.tsx
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import { getNewsByCategory } from "@/lib/news";
@@ -38,7 +37,7 @@ const CategoryNews = () => {
   );
 
   return (
-    <div className=" font-times container mx-auto p-4 ">
+    <div className="font-times container mx-auto p-4 ">
       <Nav
         selectedCategory={category as string}
         onCategoryChange={(newCategory) =>
@@ -51,7 +50,7 @@ const CategoryNews = () => {
           : ""}
       </h1>
       <hr className="border-t-2 border-gray-600 mb-6" />
-     
+
       {loading ? (
         <div className="flex justify-center items-center h-64">
           <div className="loader">Cargando...</div>{" "}
@@ -80,10 +79,18 @@ const CategoryNews = () => {
             </div>
           ))}
         </div>
-        
       )}
     </div>
   );
 };
 
-export default CategoryNews;
+// Componente de envoltura para el Suspense Boundary
+const Page = () => {
+  return (
+    <Suspense fallback={<div>Cargando...</div>}>
+      <CategoryNews />
+    </Suspense>
+  );
+};
+
+export default Page;
