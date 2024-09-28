@@ -8,22 +8,22 @@ import Nav from "@/components/Nav";
 
 const CategoryNews = () => {
   const router = useRouter();
-  const searchParams = useSearchParams(); // Obtener los parámetros de búsqueda
-  const category = searchParams.get("category"); // Obtener la categoría de los parámetros de consulta
+  const searchParams = useSearchParams();
+  const category = searchParams.get("category");
   const [articles, setArticles] = useState<Article[]>([]);
-  const [loading, setLoading] = useState(true); // Estado para controlar la carga
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchNews = async () => {
       if (category) {
         try {
-          setLoading(true); // Iniciar la carga
+          setLoading(true);
           const news = await getNewsByCategory(category);
           setArticles(news);
         } catch (error) {
           console.error("Error fetching news:", error);
         } finally {
-          setLoading(false); // Finalizar la carga
+          setLoading(false);
         }
       }
     };
@@ -37,7 +37,7 @@ const CategoryNews = () => {
   );
 
   return (
-    <div className="font-times container mx-auto p-4 ">
+    <div className="font-times container mx-auto p-4">
       <Nav
         selectedCategory={category as string}
         onCategoryChange={(newCategory) =>
@@ -53,15 +53,12 @@ const CategoryNews = () => {
 
       {loading ? (
         <div className="flex justify-center items-center h-64">
-          <div className="loader">Cargando...</div>{" "}
+          <div className="loader">Cargando...</div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {filteredArticles.map((article, index) => (
-            <div
-              key={index}
-              className="p-4"
-            >
+            <div key={index} className="p-4">
               <img
                 src={article.urlToImage || "/image/por-defecto.webp"}
                 alt={article.title}
@@ -84,7 +81,6 @@ const CategoryNews = () => {
   );
 };
 
-// Componente de envoltura para el Suspense Boundary
 const Page = () => {
   return (
     <Suspense fallback={<div>Cargando...</div>}>
