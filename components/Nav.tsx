@@ -16,28 +16,29 @@ const Nav: React.FC<NavProps> = ({ selectedCategory, onCategoryChange }) => {
   const handleCategoryChange = (category: string) => {
     onCategoryChange(category);
     router.push(`/CategoryNews?category=${category}`);
-    setIsMenuOpen(false); // Cerrar menú después de seleccionar
+    setIsMenuOpen(false); 
   };
 
   const handleLogoClick = () => {
     onCategoryChange('');
     router.push('/');
-    setIsMenuOpen(false); // Cerrar menú cuando se haga clic en el logo
+    setIsMenuOpen(false); 
   };
 
   return (
-    <nav className=" top-0 z-10  p-4 flex flex-col items-center space-y-4">
+    <nav className="font-times top-0 z-10  p-4  flex flex-col items-center space-y-4">
       
-      {/* Logo con tamaño grande en desktop, y más pequeño en mobile */}
+     
       <div 
-        className="text-3xl lg:text-5xl font-bold text-gray-900 cursor-pointer mb-4" 
+        className=" text-3xl border-t-4 w-full text-center pt-2 border-gray-600 lg:text-5xl font-bold text-gray-900 cursor-pointer mb-4" 
         onClick={handleLogoClick}
       >
-        📰 NewsApp
+        
+        The Daily Bulletin
       </div>
 
-      {/* Categorías con líneas arriba y abajo, y ajustando el espaciado y el tamaño de texto en mobile */}
-      <div className="w-full border-t-2 border-b-2 border-gray-900 py-2">
+      
+      <div className="w-full border-t-2 border-b-2 border-gray-600 py-1">
         <div className="flex justify-center space-x-3 lg:space-x-6">
           {categories.map((category) => (
             <button

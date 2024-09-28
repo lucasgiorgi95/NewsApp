@@ -7,3 +7,7 @@ body{
   padding: 0;
   background-color: aliceblue;
 }
+
+.font-times {
+  font-family: "Times New Roman", Times, serif;
+}

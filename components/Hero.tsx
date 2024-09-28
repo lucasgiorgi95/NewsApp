@@ -35,13 +35,12 @@ export default function Hero({ articles }: BreakingNewsProps) {
   const randomArticles = articles.slice(4, 10); // Seis artículos aleatorios
 
   return (
-    <div className="container my-8 mr-[100rem] flex flex-col md:flex-row">
-      <div className="md:w-2/3 mx-auto"> 
-        {/* Título Principal */}
+    <div className="font-times  my-8 flex flex-col md:flex-row pr-[1rem]">
+      <div className="md:w-[67%] mx-auto"> 
+    
         <h2 className="text-3xl text-center font-bold mb-4">Breaking News</h2>
-        <hr className="border-t-2 border-gray-300 mb-6" />
+        <hr className="border-t-2 border-gray-600 mb-6" />
         
-        {/* Artículo Principal */}
         <div className="mb-6">
           {mainArticle.urlToImage && (
             <img
@@ -52,28 +51,28 @@ export default function Hero({ articles }: BreakingNewsProps) {
           )}
           <h3 className="text-xl font-semibold mb-2">{mainArticle.title}</h3>
           <a href={mainArticle.url} target="_blank" rel="noopener noreferrer" className="text-blue-500">
-            Leer más
+          Read more
           </a>
         </div>
 
         {/* Tres Artículos Secundarios en Columna */}
         <div className="flex flex-col gap-4 mb-6">
           {secondaryArticles.map((article, index) => (
-            <div key={index} className="p-4">
+            <div key={index} className="">
               <h3 className="text-lg font-semibold mb-1">{article.title}</h3>
               <p className="text-gray-700 mb-1">{article.description}</p>
               <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-blue-500">
-                Leer más
+              Read more
               </a>
             </div>
           ))}
         </div>
 
         {/* Línea Divisoria */}
-        <hr className="border-t-2 border-gray-300 mb-6" />
+        <hr className="border-t-2 border-gray-600 mb-6" />
 
         {/* Seis Noticias Aleatorias */}
-        <h2 className="text-2xl font-bold mb-4">Más Noticias</h2>
+        <h2 className="text-2xl font-bold mb-4">More News</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {randomArticles.map((article, index) => (
             <div key={index} className="p-4">
@@ -86,7 +85,7 @@ export default function Hero({ articles }: BreakingNewsProps) {
               )}
               <h3 className="text-base font-semibold mb-1">{article.title}</h3>
               <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-blue-500">
-                Leer más
+              Read more
               </a>
             </div>
           ))}
@@ -94,8 +93,8 @@ export default function Hero({ articles }: BreakingNewsProps) {
       </div>
 
       {/* Componente Sidebar de Noticias Populares */}
-      <div className="w-full md:w-1/3 lg:w-1/4 mt-10 md:mt-0">
-        <PopularNews articles={articles.slice(10)} />
+      <div className="w-full md:w-1/3 lg:w-[27%] mt-10 md:mt-0">
+        <PopularNews articles={articles.slice(12)} />
       </div>
     </div>
   );
