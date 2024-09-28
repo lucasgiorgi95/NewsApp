@@ -30,19 +30,17 @@ export default function Home() {
   }, [category]); 
 
  
-  const filteredArticles = articles.filter(
-    article => article.title !== '[Removed]' && article.description !== '[Removed]'
-  );
+  
 
   
-  const popularArticles = filteredArticles.slice(0, 6);
+  const popularArticles = articles.slice(0, 6);
 
   return (
     <div className="container mx-auto ">
       <Nav selectedCategory={category} onCategoryChange={setCategory} />
 
       
-      {filteredArticles.length > 0 && <Hero articles={filteredArticles} />}
+      {articles.length > 0 && <Hero articles={articles} />}
 
       {/* <PopularNews articles={popularArticles} /> */}
     </div>

@@ -31,10 +31,7 @@ const CategoryNews = () => {
     fetchNews();
   }, [category]);
 
-  const filteredArticles = articles.filter(
-    (article) =>
-      article.title !== "[Removed]" && article.description !== "[Removed]"
-  );
+
 
   return (
     <div className="font-times container mx-auto p-4">
@@ -57,7 +54,7 @@ const CategoryNews = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredArticles.map((article, index) => (
+          {articles.map((article, index) => (
             <div key={index} className="p-4">
               <img
                 src={article.urlToImage || "/image/por-defecto.webp"}
