@@ -52,17 +52,19 @@ const CategoryNews = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {articles.length > 0 ? (
+          {articles && articles.length > 0 ? (
             articles.map((article, index) => (
               <div key={index} className="p-4">
                 <img
-                  src={article.urlToImage || "/image/por-defecto.webp"}
-                  alt={article.title}
+                  src={article?.urlToImage || "/image/por-defecto.webp"}
+                  alt={article?.title || "No title available"}
                   className="w-full h-48 object-cover mb-4"
                 />
-                <h2 className="text-2xl font-semibold mb-2">{article.title}</h2>
+                <h2 className="text-2xl font-semibold mb-2">
+                  {article?.title || "No title"}
+                </h2>
                 <a
-                  href={article.url}
+                  href={article?.url || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-500"

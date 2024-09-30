@@ -23,14 +23,20 @@ export default function Home() {
     fetchNews();
   }, [category]);
 
-  const popularArticles = articles.length > 6 ? articles.slice(0, 6) : [];
+  const popularArticles = (articles && articles.length > 6) ? articles.slice(0, 6) : [];
 
   return (
     <div className="container mx-auto">
       <Nav selectedCategory={category} onCategoryChange={setCategory} />
       
-      {articles.length > 0 && <Hero articles={articles} />}
-      {popularArticles.length > 0 && <PopularNews articles={popularArticles} />}
+      {articles && articles.length > 0 ? (
+        <>
+          <Hero articles={articles} />
+          <PopularNews articles={popularArticles} />
+        </>
+      ) : (
+        <div>No news articles available.</div>
+      )}
     </div>
   );
 }
