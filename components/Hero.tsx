@@ -23,9 +23,9 @@ export default function Hero({ articles }: BreakingNewsProps) {
     );
   }
 
-  const mainArticle = articles?.[0] || null;
-  const secondaryArticles = articles?.slice(1, 4) || [];
-  const randomArticles = articles?.slice(4, 10) || [];
+  const mainArticle = articles[0] || null;
+  const secondaryArticles = articles.slice(1, 4) || [];
+  const randomArticles = articles.slice(4, 10) || [];
 
   return (
     <div className="font-times my-8 flex flex-col md:flex-row pr-[1rem] px-4">

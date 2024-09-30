@@ -22,6 +22,7 @@ const CategoryNews = () => {
           setArticles(news || []);
         } catch (error) {
           console.error("Error fetching news:", error);
+          setArticles([]); // Asegúrate de establecer un estado vacío en caso de error
         } finally {
           setLoading(false);
         }
@@ -52,7 +53,7 @@ const CategoryNews = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {articles && articles.length > 0 ? (
+          {articles.length > 0 ? (
             articles.map((article, index) => (
               <div key={index} className="p-4">
                 <img
@@ -91,4 +92,3 @@ const Page = () => {
 };
 
 export default Page;
-//cambios

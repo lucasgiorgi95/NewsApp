@@ -14,9 +14,10 @@ export default function Home() {
     const fetchNews = async () => {
       try {
         const news = await getNewsByCategory(category || 'general');
-        setArticles(news);
+        setArticles(news || []); // Establecer un estado vacío en caso de que no haya noticias
       } catch (error) {
         console.error("Error fetching news:", error);
+        setArticles([]); // Manejar el error estableciendo un estado vacío
       }
     };
 
@@ -29,7 +30,7 @@ export default function Home() {
     <div className="container mx-auto">
       <Nav selectedCategory={category} onCategoryChange={setCategory} />
       
-      {articles && articles.length > 0 ? (
+      {articles.length > 0 ? (
         <>
           <Hero articles={articles} />
           <PopularNews articles={popularArticles} />
