@@ -1,4 +1,3 @@
-'use client';
 import { useEffect, useState } from "react";
 import { Article } from "@/lib/types";
 import PopularNews from "./PopularNews";
@@ -16,16 +15,12 @@ export default function Hero({ articles }: BreakingNewsProps) {
     }
   }, [articles]);
 
-  if (loading) {
+  if (!articles || articles.length < 10) {
     return (
       <div className="flex justify-center items-center h-64">
         <div className="loader">Cargando...</div>
       </div>
     );
-  }
-
-  if (!articles || articles.length < 10) {
-    return null;
   }
 
   const mainArticle = articles[0];
@@ -39,15 +34,15 @@ export default function Hero({ articles }: BreakingNewsProps) {
         <hr className="border-t-2 border-gray-600 mb-6" />
         
         <div className="mb-6">
-          {mainArticle.urlToImage && (
+          {mainArticle?.urlToImage && (
             <img
               src={mainArticle.urlToImage}
               alt={mainArticle.title}
               className="w-full h-70 object-cover rounded-md mb-3"
             />
           )}
-          <h3 className="text-xl font-semibold mb-2">{mainArticle.title}</h3>
-          <a href={mainArticle.url} target="_blank" rel="noopener noreferrer" className="text-blue-500">
+          <h3 className="text-xl font-semibold mb-2">{mainArticle?.title}</h3>
+          <a href={mainArticle?.url} target="_blank" rel="noopener noreferrer" className="text-blue-500">
             Read more
           </a>
         </div>
@@ -55,9 +50,9 @@ export default function Hero({ articles }: BreakingNewsProps) {
         <div className="flex flex-col gap-4 mb-6">
           {secondaryArticles.map((article, index) => (
             <div key={index}>
-              <h3 className="text-lg font-semibold mb-1">{article.title}</h3>
-              <p className="text-gray-700 mb-1">{article.description}</p>
-              <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-blue-500">
+              <h3 className="text-lg font-semibold mb-1">{article?.title}</h3>
+              <p className="text-gray-700 mb-1">{article?.description}</p>
+              <a href={article?.url} target="_blank" rel="noopener noreferrer" className="text-blue-500">
                 Read more
               </a>
             </div>
@@ -70,15 +65,15 @@ export default function Hero({ articles }: BreakingNewsProps) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {randomArticles.map((article, index) => (
             <div key={index} className="p-4">
-              {article.urlToImage && (
+              {article?.urlToImage && (
                 <img
                   src={article.urlToImage}
-                  alt={article.title}
+                  alt={article?.title}
                   className="w-full h-32 object-cover rounded-md mb-2"
                 />
               )}
-              <h3 className="text-base font-semibold mb-1">{article.title}</h3>
-              <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-blue-500">
+              <h3 className="text-base font-semibold mb-1">{article?.title}</h3>
+              <a href={article?.url} target="_blank" rel="noopener noreferrer" className="text-blue-500">
                 Read more
               </a>
             </div>
