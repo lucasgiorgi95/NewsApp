@@ -1,11 +1,10 @@
 'use client';
-
 import { useEffect, useState } from "react";
 import { Article } from "@/lib/types";
 import PopularNews from "./PopularNews";
 
 interface BreakingNewsProps {
-  articles: Article[]; // Este podría ser opcional si los artículos se obtienen de otra fuente
+  articles: Article[];
 }
 
 export default function Hero({ articles }: BreakingNewsProps) {
@@ -26,7 +25,7 @@ export default function Hero({ articles }: BreakingNewsProps) {
   }
 
   if (!articles || articles.length < 10) {
-    return null; 
+    return null;
   }
 
   const mainArticle = articles[0];

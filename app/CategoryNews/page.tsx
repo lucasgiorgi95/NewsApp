@@ -31,8 +31,6 @@ const CategoryNews = () => {
     fetchNews();
   }, [category]);
 
-
-
   return (
     <div className="font-times container mx-auto p-4">
       <Nav
